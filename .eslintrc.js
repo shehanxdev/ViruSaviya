@@ -16,6 +16,8 @@ module.exports = {
     },
   ],
   parserOptions: {
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
@@ -23,5 +25,8 @@ module.exports = {
   ignorePatterns: ['.eslintrc.js', 'node_modules'],
   rules: {
     '@typescript-eslint/no-var-requires': 'off',
+
+    '@typescript-eslint/semi': 'off',
+    '@typescript-eslint/object-curly-spacing': 'off',
   },
 };
