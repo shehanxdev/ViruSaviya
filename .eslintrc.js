@@ -1,32 +1,31 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   extends: ['standard-with-typescript', 'plugin:react/recommended'],
   overrides: [
     {
       env: {
-        node: true,
+        node: true
       },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: 'script',
-      },
-    },
+        sourceType: 'script'
+      }
+    }
   ],
   parserOptions: {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react'],
   ignorePatterns: ['.eslintrc.js', 'node_modules'],
   rules: {
     '@typescript-eslint/no-var-requires': 'off',
-
     '@typescript-eslint/semi': 'off',
-    '@typescript-eslint/object-curly-spacing': 'off',
-  },
+    '@typescript-eslint/object-curly-spacing': 'off'
+  }
 };
