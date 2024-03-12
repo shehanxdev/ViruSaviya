@@ -1,14 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Button as NBButton, Text, useTheme } from 'native-base';
 import { colors } from './../../constants/colors';
+import { TextFontSizes } from 'src/constants';
 
 interface ButtonProps {
   title: string;
   color?: string;
   variant?: 'solid' | 'outline' | 'ghost';
   isLoading?: boolean;
-  fontSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  fontSize?: TextFontSizes;
   buttonTextColor?: string;
   onPress?: () => void;
 }
@@ -26,11 +26,12 @@ export const Button = ({
 
   return (
     <NBButton
+      fontFamily={'Noto Sans Sinhala'}
       onPress={onPress}
       isLoading={isLoading}
-      backgroundColor={color ? color : theme.colors.primary[500]}
+      backgroundColor={color ?? theme.colors.primary[400]}
       variant={variant}
-      _pressed={{ backgroundColor: colors.primary[600] }}>
+      _pressed={{ backgroundColor: colors.primary[500] }}>
       <Text color={buttonTextColor} fontSize={fontSize}>
         {title}
       </Text>
