@@ -1,22 +1,17 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native';
-
-import { Header } from 'react-native/Libraries/NewAppScreen';
+import { SafeAreaView, StatusBar } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
-import { Button } from './src/components/index';
 import { theme } from './theme';
-import { strings } from './src/constants/index';
+import tw from 'twrnc';
+import { Routes } from './src/navigation';
+
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme} isSSR={false}>
-      <SafeAreaView>
+      <SafeAreaView style={tw` flex-1`}>
         <StatusBar />
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Header />
-          <View>
-            <Button title={strings.සුවත_පරීක්ෂාව}></Button>
-          </View>
-        </ScrollView>
+
+        <Routes isFirstTime={false} />
       </SafeAreaView>
     </NativeBaseProvider>
   );
