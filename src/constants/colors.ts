@@ -11,5 +11,6 @@ export const colors = {
     600: '#1F1F1F',
     500: '#ffffff'
   },
-  white: '#ffffff'
+  white: '#ffffff',
+  black: '#000000'
 };
