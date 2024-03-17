@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { Button } from '../components';
 import { HomeScreen } from './../screens/MainRouteScreens/HomeScreen/HomeScreen';
 import { QuestionStackNavigator } from './Questions.routes';
+import { CommunityScreen } from './../screens/MainRouteScreens/HomeScreen/CommunityScreen';
 
 const MainStack = createStackNavigator();
 
@@ -28,7 +29,7 @@ export const MainStackNavigator = () => {
         }}
       />
       <MainStack.Screen name="Tasks" component={TestScreen} />
-      <MainStack.Screen name="Exercises" component={TestScreen} />
+      <MainStack.Screen name="CommunityScreen" component={CommunityScreen} />
       <MainStack.Screen
         name="QuestionsStack"
         component={QuestionStackNavigator}

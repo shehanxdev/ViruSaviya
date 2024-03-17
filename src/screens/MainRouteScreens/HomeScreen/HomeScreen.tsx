@@ -36,7 +36,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
         </Pressable>
         <Pressable
           style={tw`bg-white rounded-lg p-2  w-40 h-40 shadow-md`}
-          onPress={() => handleNavigation('Tasks')}>
+          onPress={() => handleNavigation('CommunityScreen')}>
           <Text style={tw`text-center text-xl`}>Post My Thaughts</Text>
         </Pressable>
       </View>
