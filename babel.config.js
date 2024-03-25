@@ -20,7 +20,8 @@ module.exports = {
           '@vs/components': './src/components/index',
           '@vs/constants': './src/constants/index',
           '@vs/data': './src/data/index',
-          '@vs/assets': './src/assets/index'
+          '@vs/assets': './src/assets/index',
+          '@vs/screens': './src/screens/index'
         }
       }
     ]

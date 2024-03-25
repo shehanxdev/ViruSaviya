@@ -2,9 +2,9 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Text, View } from 'react-native';
 import { Button } from '../components';
-import { HomeScreen } from './../screens/MainRouteScreens/HomeScreen/HomeScreen';
+import { HomeScreen } from '../screens/MainRouteScreens/HomeScreen/HomeScreen';
 import { QuestionStackNavigator } from './Questions.routes';
-import { CommunityScreen } from './../screens/MainRouteScreens/HomeScreen/CommunityScreen';
+import { CommunityScreen } from '@vs/screens';
 
 const MainStack = createStackNavigator();
 

@@ -14,8 +14,8 @@ export const BaseQuestionScreen: React.FC<BaseQuestionScreenProps> = ({
   withBlob = false
 }) => {
   return (
-    <View style={tw`h-100 items-center`}>
-      {withBlob && <BlobBackgroundSVG style={tw`absolute w-full h-full`} />}
+    <View style={tw`h-100 flex-1`}>
+      {withBlob && <BlobBackgroundSVG style={tw`absolute`} />}
       {children}
     </View>
   );
