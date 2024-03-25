@@ -5,6 +5,7 @@ import { strings } from './../../../constants/strings';
 import tw from 'twrnc';
 import { Button } from '../../../components/Button';
 import type { StackScreenProps } from '@react-navigation/stack';
+
 type WelcomeScreenProps = StackScreenProps<
   Record<string, object | undefined>,
   'WelcomeScreen'

@@ -7,8 +7,19 @@ import { initialQuestions } from '@vs/data';
 import { Button } from '@vs/components';
 import { colors, strings } from '@vs/constants';
 import { RadioButton } from 'react-native-paper';
+import { StackScreenProps } from '@react-navigation/stack';
 
-export const QuestionScreen: React.FC = () => {
+type QuestionScreenProps = StackScreenProps<
+  Record<string, object | undefined>,
+  'QuestionScreen'
+> & {
+  isDiagnosisAssessment?: boolean;
+};
+
+export const QuestionScreen = ({
+  navigation,
+  isDiagnosisAssessment = true
+}: QuestionScreenProps) => {
   const [questionNumber, setquestionNumber] = useState<number>(1);
   const [chosenAnswer, setChosenAnswer] = useState<string>('');
   const selectedAnswers = useRef<string[]>(new Array(initialQuestions.length));
@@ -20,6 +31,11 @@ export const QuestionScreen: React.FC = () => {
   const navigateToPreviousQuestion = () => {
     setquestionNumber(questionNumber - 1);
   };
+
+  const navigateToMainScreen = () => {
+    navigation.navigate('MainStack');
+  };
+
   const addToAnswerList = (answer: string) => {
     selectedAnswers.current[questionNumber - 1] = answer;
     console.log(selectedAnswers.current);
@@ -58,6 +74,11 @@ export const QuestionScreen: React.FC = () => {
           {getRadioButtons(initialQuestions[questionNumber - 1].answers)}
         </View>
         <View style={tw`flex gap-4 mt-4`}>
+          {questionNumber === initialQuestions.length && (
+            <Button
+              title={strings.ඉදිරියට}
+              onPress={navigateToMainScreen}></Button>
+          )}
           {questionNumber < initialQuestions.length && (
             <Button
               title={strings.ඉදිරියට}
