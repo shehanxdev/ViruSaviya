@@ -11,6 +11,8 @@ export const colors = {
     600: '#1F1F1F',
     500: '#ffffff'
   },
+  lightGrey: '#d3d3d3',
   white: '#ffffff',
-  black: '#000000'
+  black: '#000000',
+  transparent: 'ffffff00'
 };

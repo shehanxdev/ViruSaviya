@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { WelcomeScreen } from '../screens/QuestionsRouteScreens/WelcomeScreen/WelcomeScreen';
-import { QuestionScreen } from './../screens/QuestionsRouteScreens/QuestionScreen/QuestionScreen';
+import { QuestionScreen } from '../screens/QuestionsRouteScreens/QuestionScreen/QuestionScreen';
 import { MainStackNavigator } from './Main.routes';
 
 const QuestionStack = createStackNavigator();

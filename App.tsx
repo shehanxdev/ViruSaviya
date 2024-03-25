@@ -3,13 +3,14 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 import { theme } from './theme';
 import tw from 'twrnc';
-import { Routes } from './src/navigation';
+import { Routes } from './src/routes';
+import { colors } from '@vs/constants';
 
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme} isSSR={false}>
       <SafeAreaView style={tw` flex-1`}>
-        <StatusBar />
+        <StatusBar backgroundColor={colors.primary[300]} />
 
         <Routes isFirstTime={false} />
       </SafeAreaView>

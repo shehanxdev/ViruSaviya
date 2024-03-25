@@ -15,7 +15,8 @@
       "@vs/components": ["src/components/index"],
       "@vs/constants": ["src/constants/index"],
       "@vs/data": ["src/data/index"],
-      "@vs/assets": ["src/assets/index"]
+      "@vs/assets": ["src/assets/index"],
+      "@vs/screens": ["src/screens/index.ts"]
     },
     "resolveJsonModule": true /* Allows importing modules with a ‘.json’ extension, which is a common practice in node projects. */,
     "isolatedModules": true /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */,
