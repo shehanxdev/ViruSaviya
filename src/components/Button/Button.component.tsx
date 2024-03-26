@@ -6,7 +6,7 @@ import {
   NavtiveBaseButtonVariant,
   NativeBaseButtonVariantType
 } from '@vs/constants';
-
+import tw from 'twrnc';
 interface ButtonProps {
   title: string;
   bgColor?: string;
@@ -35,6 +35,7 @@ export const Button = ({
 
   return (
     <NBButton
+      style={tw`rounded-full`}
       fontFamily={'Noto Sans Sinhala'}
       onPress={onPress}
       outlineColor={outlineColor}

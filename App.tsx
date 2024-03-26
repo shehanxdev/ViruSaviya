@@ -9,7 +9,7 @@ import { colors } from '@vs/constants';
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme} isSSR={false}>
-      <SafeAreaView style={tw` flex-1`}>
+      <SafeAreaView style={tw`flex-1`}>
         <StatusBar backgroundColor={colors.primary[300]} />
 
         <Routes isFirstTime={false} />
