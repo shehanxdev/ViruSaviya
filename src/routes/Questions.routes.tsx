@@ -3,8 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { WelcomeScreen } from '../screens/QuestionsRouteScreens/WelcomeScreen/WelcomeScreen';
 import { QuestionScreen } from '../screens/QuestionsRouteScreens/QuestionScreen/QuestionScreen';
 import { MainStackNavigator } from './Main.routes';
+import { QuestionStackParamList } from './route.types';
 
-const QuestionStack = createStackNavigator();
+const QuestionStack = createStackNavigator<QuestionStackParamList>();
 
 export const QuestionStackNavigator = () => {
   return (

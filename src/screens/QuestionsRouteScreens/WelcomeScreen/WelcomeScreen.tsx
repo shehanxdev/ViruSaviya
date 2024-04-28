@@ -1,6 +1,6 @@
 import { Text, View } from 'native-base';
 import React, { useEffect, useState } from 'react';
-import { BaseQuestionScreen } from '../BaseScreenWithBlob';
+import { BaseQuestionScreen } from '../BaseQuestionScreen';
 import { strings } from './../../../constants/strings';
 import tw from 'twrnc';
 import { Button } from '../../../components/Button';
@@ -8,7 +8,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import {
   NumericalConstants,
   colors,
-  pathNames,
+  screenNames,
   stackNames
 } from '@vs/constants';
 import { MeditatingPersonSVG } from '@vs/assets';
@@ -85,7 +85,7 @@ export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
         <View style={tw`flex  gap-4 mx-10`}>
           <Button
             title={strings.සුවතා_පරීක්ෂාව}
-            onPress={() => naviagteToNextScreen(pathNames.QuestionScreen)}
+            onPress={() => naviagteToNextScreen(screenNames.QuestionScreen)}
           />
           <View style={tw`border-[${colors.primary[500]}] border rounded-full`}>
             <Button
