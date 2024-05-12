@@ -1,22 +1,13 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text, View } from 'react-native';
-import { Button } from '../components';
 import { HomeScreen } from '../screens/MainRouteScreens/HomeScreen/HomeScreen';
 import { QuestionStackNavigator } from './Questions.routes';
 import { CommunityScreen } from '@vs/screens';
+import { MainStackParamList } from './route.types';
 
-const MainStack = createStackNavigator();
+const MainStack = createStackNavigator<MainStackParamList>();
 
 export const MainStackNavigator = () => {
-  const TestScreen = (props: any) => {
-    return (
-      <View>
-        <Text>Test Screen</Text>
-        <Button title="Hi" />
-      </View>
-    );
-  };
   return (
     <MainStack.Navigator
       initialRouteName="HomeScreen"
@@ -28,7 +19,6 @@ export const MainStackNavigator = () => {
           title: 'Awesome app'
         }}
       />
-      <MainStack.Screen name="Tasks" component={TestScreen} />
       <MainStack.Screen name="CommunityScreen" component={CommunityScreen} />
       <MainStack.Screen
         name="QuestionsStack"

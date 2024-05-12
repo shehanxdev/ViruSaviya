@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, View } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 import { theme } from './theme';
 import tw from 'twrnc';
@@ -9,11 +9,10 @@ import { colors } from '@vs/constants';
 function App(): React.JSX.Element {
   return (
     <NativeBaseProvider theme={theme} isSSR={false}>
-      <SafeAreaView style={tw`flex-1`}>
-        <StatusBar backgroundColor={colors.primary[300]} />
+      <StatusBar backgroundColor={colors.primary[300]} />
+      {/* //TODO: below route param isFirst Time must be changed to a dynamic value once developments are done */}
 
-        <Routes isFirstTime={false} />
-      </SafeAreaView>
+      <Routes isFirstTime={true} />
     </NativeBaseProvider>
   );
 }
