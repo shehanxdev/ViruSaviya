@@ -7,10 +7,10 @@ interface RoutesPropType {
   isFirstTime: boolean;
 }
 
-export const Routes = ({ isFirstTime = true }: RoutesPropType) => {
+export const Routes = ({ isFirstTime }: RoutesPropType) => {
   return (
     <NavigationContainer>
-      {isFirstTime ? <MainStackNavigator /> : <QuestionStackNavigator />}
+      {isFirstTime ? <QuestionStackNavigator /> : <MainStackNavigator />}
     </NavigationContainer>
   );
 };
