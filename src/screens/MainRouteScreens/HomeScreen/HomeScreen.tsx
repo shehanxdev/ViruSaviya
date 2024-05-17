@@ -1,45 +1,84 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import { Text, View, Pressable } from 'native-base';
+import { Card, Text, View } from 'native-base';
 import React from 'react';
 import tw from 'twrnc';
+import { strings } from '@vs/constants';
+import {
+  AngryFaceSvg,
+  AssessmentSvg,
+  HappyFaceSvg,
+  HelpSvg,
+  HomePageSvg,
+  NeutralFaceSvg,
+  SadFaceSvg,
+  VoiceAnalyzeSvg
+} from '@vs/assets';
+import { Pressable, ScrollView, Image } from 'react-native';
 type HomeScreenProps = StackScreenProps<
   Record<string, object | undefined>,
   'HomeScreen'
 > & {
   isDiagnosisAssessment?: boolean;
 };
-export const HomeScreen = ({ navigation }: HomeScreenProps) => {
-  const handleNavigation = (path: string) => {
-    navigation.navigate(path);
-  };
+export const HomeScreen = () => {
+  // const handleNavigation = (path: string) => {
+  //   navigation.navigate(path);
+  // };
   return (
-    <View style={tw`flex flex-1  items-center justify-end p-4 gap-8 mb-14`}>
-      <View style={tw`flex flex-row items-center gap-4`}>
-        <Pressable
-          style={tw`bg-white rounded-lg p-2  w-40 h-40 shadow-md`}
-          onPress={() => handleNavigation('QuestionsStack')}>
-          <Text style={tw`text-center text-xl`}>Take Diagnosis Assessment</Text>
+    <ScrollView style={tw`flex p-5 `}>
+      <Text style={tw`text-3xl pt-5`}>{strings.ආයුබෝවන්}</Text>
+      <HomePageSvg style={tw`mt-6`} />
+      <Text style={tw`text-lg pt-5`}>{strings.අද_ඔබට_කොහොමද}?</Text>
+      <View style={tw`flex-row justify-center gap-10 mt-4`}>
+        <Pressable>
+          <HappyFaceSvg />
+          <Text style={tw`mt-2`}>{strings.සතුටින්}</Text>
         </Pressable>
-        <Pressable
-          style={tw`bg-white rounded-lg p-2  w-40 h-40 shadow-md`}
-          onPress={() => handleNavigation('Exercises')}>
-          <Text style={tw`text-center text-xl`}>
-            View Recommended Exercises{' '}
-          </Text>
+        <Pressable>
+          <NeutralFaceSvg />
+          <Text style={tw`mt-2`}>මධ්‍යස්ථයි</Text>
         </Pressable>
-      </View>
-      <View style={tw`flex flex-row items-center gap-4`}>
-        <Pressable
-          style={tw`bg-white rounded-lg p-2  w-40 h-40 shadow-md`}
-          onPress={() => handleNavigation('Tasks')}>
-          <Text style={tw`text-center text-xl`}>Analyze My Voice</Text>
+        <Pressable>
+          <SadFaceSvg />
+          <Text style={tw`mt-2`}>{strings.දුකින්}</Text>
         </Pressable>
-        <Pressable
-          style={tw`bg-white rounded-lg p-2  w-40 h-40 shadow-md`}
-          onPress={() => handleNavigation('CommunityScreen')}>
-          <Text style={tw`text-center text-xl`}>Post My Thaughts</Text>
+        <Pressable>
+          <AngryFaceSvg />
+          <Text style={tw`mt-2`}>{strings.තරහින්}</Text>
         </Pressable>
       </View>
-    </View>
+      <View
+        style={tw`shadow border-black shadow-[shadow-gray-100] py-6 px-5 rounded-sm italic mt-8`}>
+        <Text style={tw`italic`}>
+          අපේ ලොකුම දුර්වලකම තියෙන්නේ අත්හැරීම. සාර්ථක වීමට වඩාත්ම නිශ්චිත
+          මාර්ගය වන්නේ සෑම විටම තවත් එක් වරක් උත්සාහ කිරීමයි.
+        </Text>
+        <Text>-Thomas Edison-</Text>
+      </View>
+      <View>
+        <Text style={tw`my-10 text-lg`}>ඔබ කුමක් කිරීමට කැමතිද?</Text>
+        <View style={tw`mb-5 flex-row justify-center gap-10`}>
+          <Pressable style={tw`flex border-2  border-black rounded-lg p-4`}>
+            <VoiceAnalyzeSvg />
+            <Text style={tw`text-center`}>Analyze Voice</Text>
+          </Pressable>
+          <Pressable style={tw`flex border-2  border-black rounded-lg p-4`}>
+            <AssessmentSvg />
+            <Text style={tw`text-center`}>Analyze Voice</Text>
+          </Pressable>
+        </View>
+        <View style={tw`mb-10 flex-row justify-center gap-10`}>
+          <Pressable style={tw`flex border-2  border-black rounded-lg p-4`}>
+            <VoiceAnalyzeSvg />
+            <Text style={tw`text-center`}>Analyze Voice</Text>
+          </Pressable>
+          <Pressable style={tw`flex border-2  border-black rounded-lg p-4`}>
+            <HelpSvg />
+            <Text style={tw`text-center`}>Help</Text>
+          </Pressable>
+        </View>
+        <Text style={tw`mb-10 text-center`}>Made with ❤️ in Sri Lanka</Text>
+      </View>
+    </ScrollView>
   );
 };

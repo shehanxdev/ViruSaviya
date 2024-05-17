@@ -1,2 +1,13 @@
 export { default as BlobBackgroundSVG } from './blob background.svg';
 export { default as MeditatingPersonSVG } from './Meditation person.svg';
+export { default as HomePageSvg } from './HomePageSVG.svg';
+export { default as HappyFaceSvg } from './HappyFace.svg';
+export { default as NeutralFaceSvg } from './NeutralFace.svg';
+export { default as AngryFaceSvg } from './AngryFace.svg';
+export { default as SadFaceSvg } from './SadFace.svg';
+export { default as HomeIconSvg } from './Home.svg';
+export { default as CommunityIconSvg } from './CommunityIconSvg.svg';
+export { default as VoiceAnalyzeSvg } from './VoiceAnalyzeSvg.svg';
+export { default as AssessmentSvg } from './AssessmentSvg.svg';
+export { default as TasksSvg } from './RecommendedTasksSVG.svg';
+export { default as HelpSvg } from './HelpSvg.svg';
