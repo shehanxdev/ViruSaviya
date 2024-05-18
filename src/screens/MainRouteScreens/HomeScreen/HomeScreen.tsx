@@ -17,18 +17,21 @@ import { Pressable, ScrollView, Image } from 'react-native';
 type HomeScreenProps = StackScreenProps<
   Record<string, object | undefined>,
   'HomeScreen'
-> & {
-  isDiagnosisAssessment?: boolean;
-};
-export const HomeScreen = () => {
+>;
+export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   // const handleNavigation = (path: string) => {
   //   navigation.navigate(path);
   // };
+
+  const handleVoiceScreenNavigation = () => {
+    navigation.navigate('VoiceAnalyzeScreen');
+  };
+
   return (
     <ScrollView style={tw`flex p-5 `}>
       <Text style={tw`text-3xl pt-5`}>{strings.ආයුබෝවන්}</Text>
       <HomePageSvg style={tw`mt-6`} />
-      <Text style={tw`text-lg pt-5`}>{strings.අද_ඔබට_කොහොමද}?</Text>
+      <Text style={tw`text-lg pt-18`}>{strings.අද_ඔබට_කොහොමද}?</Text>
       <View style={tw`flex-row justify-center gap-10 mt-4`}>
         <Pressable>
           <HappyFaceSvg />
@@ -58,7 +61,9 @@ export const HomeScreen = () => {
       <View>
         <Text style={tw`my-10 text-lg`}>ඔබ කුමක් කිරීමට කැමතිද?</Text>
         <View style={tw`mb-5 flex-row justify-center gap-10`}>
-          <Pressable style={tw`flex border-2  border-black rounded-lg p-4`}>
+          <Pressable
+            onPress={handleVoiceScreenNavigation}
+            style={tw`flex border-2  border-black rounded-lg p-4`}>
             <VoiceAnalyzeSvg />
             <Text style={tw`text-center`}>Analyze Voice</Text>
           </Pressable>
