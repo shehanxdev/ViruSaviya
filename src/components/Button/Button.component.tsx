@@ -12,9 +12,11 @@ interface ButtonProps {
   fontSize?: TextFontSizes;
   buttonTextColor?: string;
   onPress?: () => void;
+  disabled?: boolean;
 }
 
 export const Button = ({
+  disabled,
   bgColor = colors.primary[400],
   outlineColor,
   pressedButtonColor = colors.primary[500],
@@ -29,7 +31,8 @@ export const Button = ({
 
   return (
     <NBButton
-      style={tw`rounded-full`}
+      disabled={disabled}
+      style={tw`rounded-md w-full`}
       fontFamily={'Noto Sans Sinhala'}
       onPress={onPress}
       outlineColor={outlineColor}

@@ -5,6 +5,7 @@ import { theme } from './theme';
 import tw from 'twrnc';
 import { Routes } from './src/routes';
 import { colors } from '@vs/constants';
+import Toast from 'react-native-toast-message';
 
 function App(): React.JSX.Element {
   return (
@@ -13,6 +14,7 @@ function App(): React.JSX.Element {
       {/* //TODO: below route param isFirst Time must be changed to a dynamic value once developments are done */}
 
       <Routes isFirstTime={true} />
+      <Toast />
     </NativeBaseProvider>
   );
 }

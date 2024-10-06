@@ -8,6 +8,9 @@ import { Button } from '@vs/components';
 import { colors, strings } from '@vs/constants';
 import { RadioButton } from 'react-native-paper';
 import { StackScreenProps } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
+import { HTTPService } from '../../../services/HTTP.service';
+import { replaceFeaturesWithEncodedValues } from './../../../utils/encodeAnswers.util';
 
 type QuestionScreenProps = StackScreenProps<
   Record<string, object | undefined>,
@@ -20,16 +23,28 @@ export const QuestionScreen = ({ navigation }: QuestionScreenProps) => {
   const selectedAnswers = useRef<string[]>(new Array(initialQuestions.length));
 
   const navigateToNextQuestion = () => {
-    setQuestionNumber(questionNumber + 1);
+    if (selectedAnswers.current[questionNumber - 1] == null) {
+      console.log('Please choose an answer');
+      Toast.show({ type: 'error', text1: 'Please select an answer' });
+    } else {
+      setQuestionNumber(questionNumber + 1);
+    }
   };
 
   const navigateToPreviousQuestion = () => {
     setQuestionNumber(questionNumber - 1);
   };
 
-  const navigateToMainScreen = () => {
+  const navigateToMainScreen = async () => {
+    const encodedFeatures: number[] = replaceFeaturesWithEncodedValues(
+      selectedAnswers.current
+    );
+
     navigation.navigate('MainStack');
+    console.log('inside nav');
   };
+
+  const fetchDisorderPrediction = async (encodedFeatures: number[]) => {};
 
   const addToAnswerList = (answer: string) => {
     selectedAnswers.current[questionNumber - 1] = answer;
@@ -75,18 +90,14 @@ export const QuestionScreen = ({ navigation }: QuestionScreenProps) => {
         </View>
         <View style={tw`flex gap-4 my-8`}>
           {questionNumber === initialQuestions.length && (
-            <Button
-              title={strings.ඉදිරියට}
-              onPress={navigateToMainScreen}></Button>
+            <Button title="Next" onPress={navigateToMainScreen}></Button>
           )}
           {questionNumber < initialQuestions.length && (
-            <Button
-              title={strings.ඉදිරියට}
-              onPress={navigateToNextQuestion}></Button>
+            <Button title="Next" onPress={navigateToNextQuestion}></Button>
           )}
           {questionNumber > 1 && (
             <Button
-              title={strings.පෙර}
+              title="Previous"
               onPress={navigateToPreviousQuestion}></Button>
           )}
         </View>

@@ -10,22 +10,25 @@ import AudioRecorderPlayer, {
 import RNFS from 'react-native-fs';
 
 import { Button } from '@vs/components';
-//import { MicrophoneSVG } from '@vs/assets';
+
 import tw from 'twrnc';
-import { colors } from '@vs/constants';
-//import { FetchData } from './../../../services/fetchData';
+
 import ReactNativeModal from 'react-native-modal';
 import { NatureSvg, VoiceAnalyzeSvg } from '@vs/assets';
 import { MinuteTimer } from './MinuteTimer';
+import { HTTPService } from './../../../services/HTTP.service';
+import ConfettiCannon from 'react-native-confetti-cannon';
+import Toast from 'react-native-toast-message';
 
 export const VoiceAnalysisScreen = () => {
   const [isRecording, setIsRecording] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRecorderPlayer = new AudioRecorderPlayer();
+  const audioRecorderPlayer = useRef(new AudioRecorderPlayer()).current;
   const savedPath = useRef('');
   const [clicked, setClicked] = useState(0);
   const [diagnosis, setDiagnosis] = useState<number>(-1);
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [audioFrequency, setAudioFrequency] = useState(0);
+  const [showConfetti, setShowConfetti] = React.useState(false);
 
   const audioSet: AudioSet = {
     AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
@@ -79,7 +82,7 @@ export const VoiceAnalysisScreen = () => {
       console.log('Already recording');
     }
   };
-
+  const savedAudioFile = '';
   const stopRecording = async () => {
     if (isRecording) {
       try {
@@ -88,14 +91,14 @@ export const VoiceAnalysisScreen = () => {
         console.log('Recording stopped');
 
         // Fetch audio file from emulator storage
-        const audioFile = await RNFS.readFile(savedPath.current, 'base64');
+        //const audioFile = await RNFS.readFile(savedPath.current, 'base64');
 
         // Save audio file in project directory
-        const projectDir = RNFS.DocumentDirectoryPath;
-        const filePath = `${projectDir}/sound.mp3`;
-        await RNFS.writeFile(filePath, audioFile, 'base64');
+        //const projectDir = RNFS.DocumentDirectoryPath;
+        // const filePath = `${projectDir}/sound.mp3`;
+        // await RNFS.writeFile(filePath, audioFile, 'base64');
 
-        console.log('Audio file saved in project directory:', filePath);
+        console.log('Audio file saved in project directory:');
       } catch (error) {
         console.error('Failed to stop recording', error);
         Alert.alert('Error', 'Failed to stop recording');
@@ -105,42 +108,23 @@ export const VoiceAnalysisScreen = () => {
     }
   };
 
-  const startPlaying = async () => {
-    if (!isPlaying) {
-      try {
-        setIsPlaying(true);
-        await audioRecorderPlayer.startPlayer(savedPath.current);
-        console.log('Audio playback started');
-      } catch (error) {
-        console.error('Failed to start audio playback', error);
-        Alert.alert('Error', 'Failed to start audio playback');
-      }
-    } else {
-      console.log('Already playing');
-    }
-  };
-
-  const pausePlaying = async () => {
-    if (isPlaying) {
-      try {
-        setIsPlaying(false);
-        await audioRecorderPlayer.pausePlayer();
-        console.log('Audio playback paused');
-      } catch (error) {
-        console.error('Failed to pause audio playback', error);
-        Alert.alert('Error', 'Failed to pause audio playback');
-      }
-    } else {
-      console.log('No audio playing');
-    }
-  };
-
   const analyzeAudio = async () => {
     //const diagnosis = await FetchData.uploadVideo(savedPath.current, clicked);
+    const prediction = await HTTPService.analyzeAudio(
+      audioFrequency,
+      savedAudioFile
+    );
+    setAudioFrequency(0);
     setDiagnosis(1);
-    setModalVisibility(true);
+    if (prediction.prediction == 1) {
+      setModalVisibility(true);
+    } else {
+      setShowConfetti(true);
+      Toast.show({ type: 'success', text1: 'ඔබ ආතතියෙන් තොරයි' });
+    }
   };
   const handleRecordButtonClick = () => {
+    setAudioFrequency(audioFrequency + 1);
     startRecording();
     if (clicked < 2) {
       setClicked(clicked + 1);
@@ -202,6 +186,15 @@ export const VoiceAnalysisScreen = () => {
   return (
     <ScrollView style={tw`flex flex-col flex-1`}>
       {getModal()}
+      {showConfetti && (
+        <ConfettiCannon
+          count={200}
+          origin={{ x: -10, y: 0 }}
+          autoStart={true}
+          fadeOut={true}
+          onAnimationEnd={() => setShowConfetti(false)} // Stop showing confetti after the animation ends
+        />
+      )}
       <Text style={tw`text-center my-10`} fontSize={'3xl'}>
         ඔබට හැඟෙන ආකාරය කියන්න
       </Text>

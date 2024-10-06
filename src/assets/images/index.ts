@@ -1,4 +1,5 @@
 export { default as BlobBackgroundSVG } from './blob background.svg';
+
 export { default as MeditatingPersonSVG } from './Meditation person.svg';
 export { default as HomePageSvg } from './HomePageSVG.svg';
 export { default as HappyFaceSvg } from './HappyFace.svg';
@@ -15,3 +16,14 @@ export { default as HelpSvg } from './HelpSvg.svg';
 export { default as UserIconSvg } from './UserIconSvg.svg';
 export { default as HamburgerIconSvg } from './HamburgerIconSvg.svg';
 export { default as NatureSvg } from './Nature.svg';
+export { default as RecommendedTasksSVG } from './RecommendedTasksSVG.svg';
+export { default as SleepingMoonSVG } from './SleepingMoon.svg';
+export { default as SleepMonitorSVG } from './MonitorSleepSVG.svg';
+export { default as ShareSVG } from './ShareSVG.svg';
+export { default as DoctorSVG } from './Doctor.svg';
+export { default as SleepSVG } from './SleepSVG.svg';
+export { default as CalendarSVG } from './Calendar.svg';
+export { default as DiarySVG } from './Diary.svg';
+export { default as AddSVG } from './Add.svg';
+export { default as DiarySmallSVG } from './DiarySmallSvg.svg';
+export { default as DoctorPersonSVG } from './DoctorPerson.svg';

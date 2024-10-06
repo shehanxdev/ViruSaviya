@@ -1,20 +1,29 @@
 import * as React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+
 import { HomeScreen } from '../screens/MainRouteScreens/HomeScreen/HomeScreen';
-import { QuestionStackNavigator } from './Questions.routes';
-import { CommunityScreen, VoiceAnalysisScreen } from '@vs/screens';
-import { MainStackParamList } from './route.types';
+
+import {
+  CommunityScreen,
+  VoiceAnalysisScreen,
+  QuestionScreenWithinMainStack
+} from '@vs/screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   CommunityIconSvg,
   HamburgerIconSvg,
   HomeIconSvg,
   UserIconSvg,
-  VoiceAnalyzeSvgSamll
+  VoiceAnalyzeSvgSamll,
+  RecommendedTasksSVG,
+  SleepMonitorSVG,
+  DiarySmallSVG,
+  DoctorPersonSVG
 } from '@vs/assets';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import tw from 'twrnc';
-import { colors } from '@vs/constants';
+import { SleepAnalysisAndGoalDiaryStackNavigator } from './SleepAnalysis.routes';
+import { GoalDiaryStackNavigator } from './GoalDiary.routes';
+import { AppoinmentStackNavigator } from './AppoinmentStack.routes';
 
 const MainStack = createBottomTabNavigator();
 
@@ -37,6 +46,30 @@ export const MainStackNavigator = () => {
               return (
                 <View style={tw`mt-4`}>
                   <VoiceAnalyzeSvgSamll />
+                </View>
+              );
+            case 'QuestionScreen':
+              return (
+                <View style={tw`mt-4`}>
+                  <RecommendedTasksSVG />
+                </View>
+              );
+            case 'SleepAnalysisStack':
+              return (
+                <View style={tw`mt-4`}>
+                  <SleepMonitorSVG />
+                </View>
+              );
+            case 'GoalDiaryStack':
+              return (
+                <View style={tw`mt-4`}>
+                  <DiarySmallSVG />
+                </View>
+              );
+            case 'AppoinmentStack':
+              return (
+                <View style={tw`mt-4`}>
+                  <DoctorPersonSVG />
                 </View>
               );
             default:
@@ -66,14 +99,21 @@ export const MainStackNavigator = () => {
       })}>
       <MainStack.Screen name="HomeScreen" component={HomeScreen} />
       <MainStack.Screen
-        name="VoiceAnalyzeScreen"
-        component={VoiceAnalysisScreen}
+        name="QuestionScreen"
+        component={QuestionScreenWithinMainStack}
+      />
+      <MainStack.Screen
+        name="AppoinmentStack"
+        component={AppoinmentStackNavigator}
       />
       <MainStack.Screen name="CommunityScreen" component={CommunityScreen} />
-
       <MainStack.Screen
-        name="QuestionsStack"
-        component={QuestionStackNavigator}
+        name="SleepAnalysisStack"
+        component={SleepAnalysisAndGoalDiaryStackNavigator}
+      />
+      <MainStack.Screen
+        name="GoalDiaryStack"
+        component={GoalDiaryStackNavigator}
       />
     </MainStack.Navigator>
   );

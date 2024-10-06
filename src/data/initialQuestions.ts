@@ -4,17 +4,63 @@ type QuestionElementType = {
 };
 export const initialQuestions: QuestionElementType[] = [
   {
-    question:
-      'පසුගිය මාසයේ, ඔබ කොපමණ වාරයක් දුකක් හෝ බලාපොරොත්තු සුන්වීමක් අත්විඳ තිබේද?',
-    answers: ['කලාතුරකින් හෝ කවදාවත් නෑ', 'ඉඳහිට', 'නිතර', 'නිරන්තරයෙන්']
+    question: 'Right now, I feel calm and relaxed.',
+    answers: [
+      'Strongly Agree',
+      'Agree',
+      'Neutral',
+      'Disagree',
+      'Strongly Disagree'
+    ]
   },
   {
-    question:
-      'පසුගිය මාසයේ කාර්යයන් කෙරෙහි අවධානය යොමු කිරීමට සහ අවධානය යොමු කිරීමට ඔබට ඇති හැකියාව ඔබ ඇගයීමට ලක් කරන්නේ කෙසේද?',
-    answers: ['විශිෂ්ටයි', 'යහපත්', 'මධ්‍යමයි', 'දුර්වලයි']
+    question: 'At this moment, I feel anxious or worried.',
+    answers: [
+      'Strongly Agree',
+      'Agree',
+      'Neutral',
+      'Disagree',
+      'Strongly Disagree'
+    ]
   },
   {
-    question: 'මොනවාද?',
-    answers: ['ඔව්', 'නැත']
+    question: 'I currently feel optimistic about today.',
+    answers: [
+      'Strongly Agree',
+      'Agree',
+      'Neutral',
+      'Disagree',
+      'Strongly Disagree'
+    ]
+  },
+  {
+    question: 'Right now, I feel emotionally drained.',
+    answers: [
+      'Strongly Agree',
+      'Agree',
+      'Neutral',
+      'Disagree',
+      'Strongly Disagree'
+    ]
+  },
+  {
+    question: 'At this moment, I feel happy and content.',
+    answers: [
+      'Strongly Agree',
+      'Agree',
+      'Neutral',
+      'Disagree',
+      'Strongly Disagree'
+    ]
+  },
+  {
+    question: 'I feel irritable or easily upset right now.',
+    answers: [
+      'Strongly Agree',
+      'Agree',
+      'Neutral',
+      'Disagree',
+      'Strongly Disagree'
+    ]
   }
 ];
